@@ -19,6 +19,7 @@ namespace Quiz
             Application.Run(new Form1());
             //kommentar
             //Kommentar 2
+            // comment
         }
 
         //kommentar 3
