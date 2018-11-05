@@ -18,6 +18,7 @@ namespace Quiz
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
             //kommentar
+            //Kommentar 2
         }
     }
 }
