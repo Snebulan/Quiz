@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Quiz
+namespace Quiz.Model
 {
     static class Program
     {
@@ -17,6 +17,8 @@ namespace Quiz
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Default());
+            
+            
         }
     }
 }
