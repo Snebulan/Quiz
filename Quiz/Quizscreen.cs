@@ -10,15 +10,16 @@ using System.Windows.Forms;
 
 namespace Quiz
 {
-    public partial class Quizscreen : Form
+    public partial class QuizScreen : Form
     {
-        public Quizscreen()
+        public QuizScreen()
         {
             InitializeComponent();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            //TODO: check each radiobutton if answer is correct from db.
             if (radioButton1.Checked)
             {
                 MessageBox.Show("fråga1");
@@ -39,6 +40,11 @@ namespace Quiz
             {
                 MessageBox.Show("inget val");
             }
+        }
+
+        private void Quizscreen_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

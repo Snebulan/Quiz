@@ -1,6 +1,6 @@
 ﻿namespace Quiz
 {
-    partial class Quizscreen
+    partial class QuizScreen
     {
         /// <summary>
         /// Required designer variable.
@@ -112,6 +112,7 @@
             this.Controls.Add(this.radioButton1);
             this.Name = "Quizscreen";
             this.Text = "Quizscreen";
+            this.Load += new System.EventHandler(this.Quizscreen_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
