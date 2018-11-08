@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Quiz.Model;
 
 namespace Quiz.Model
 {
     static class Program
     {
+        private static Database db = new Database();
         /// <summary>
         /// The main entry point for the application.
         /// </summary>

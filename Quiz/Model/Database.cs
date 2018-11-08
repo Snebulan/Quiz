@@ -5,6 +5,9 @@ namespace Quiz.Model
     public class Database : DbContext
     {
         public DbSet<User> Users { get; set; }
+        public DbSet<Quiz> Quiz { get; set; }
+        public DbSet<Questions> Questions { get; set; }
+        public DbSet<Answers> Answers { get; set; }
         public static string DBName = "database.db";
 
         // Constructor for DB - Ensure it's created
