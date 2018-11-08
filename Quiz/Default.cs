@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Quiz.Model;
 
 namespace Quiz
 {
@@ -20,7 +21,7 @@ namespace Quiz
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text == "hej")
+            if (textBox1.Text == Program.UserList[0].Password)
             {
                 Quizscreen QZ = new Quizscreen();
                 QZ.Tag = this;
@@ -29,6 +30,11 @@ namespace Quiz
                 QZ.Show(this);
                 Hide();
             }
+        }
+
+        private void Default_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

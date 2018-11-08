@@ -7,9 +7,12 @@ using Quiz.Model;
 
 namespace Quiz.Model
 {
+    
     static class Program
     {
         private static Database db = new Database();
+        public static List<User> UserList = db.Users.ToList();
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -19,8 +22,6 @@ namespace Quiz.Model
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Default());
-            
-            
         }
     }
 }

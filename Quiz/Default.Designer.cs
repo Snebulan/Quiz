@@ -70,6 +70,7 @@
             this.Name = "Default";
             this.ShowIcon = false;
             this.Text = "Quiz";
+            this.Load += new System.EventHandler(this.Default_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
