@@ -16,12 +16,7 @@ namespace Quiz
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
-            //kommentar
-            //Kommentar 2
-            // comment
+            Application.Run(new Default());
         }
-
-        //kommentar 3
     }
 }
