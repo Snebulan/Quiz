@@ -96,11 +96,11 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 6;
-            this.button1.Text = "button1";
+            this.button1.Text = "Nästa";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // Quizscreen
+            // QuizScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -112,7 +112,7 @@
             this.Controls.Add(this.radioButton2);
             this.Controls.Add(this.radioButton1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Quizscreen";
+            this.Name = "QuizScreen";
             this.Text = "Quizscreen";
             this.Load += new System.EventHandler(this.Quizscreen_Load);
             this.ResumeLayout(false);
