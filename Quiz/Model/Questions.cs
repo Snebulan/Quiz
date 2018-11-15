@@ -6,6 +6,6 @@ namespace Quiz.Model
     {
         public int Id { get; set; }
         public string Question { get; set; }
-        public List<Answers> Answers { get; set; }
+        public Quiz Quiz { get; set; }
     }
 }

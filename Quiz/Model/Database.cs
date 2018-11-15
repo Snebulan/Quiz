@@ -26,6 +26,9 @@ namespace Quiz.Model
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>().HasData(SeedData.Users);
+            modelBuilder.Entity<Quiz>().HasData(SeedData.Quizes);
+            modelBuilder.Entity<Questions>().HasData(SeedData.Questions);
+            modelBuilder.Entity<Answers>().HasData(SeedData.Answers);
         }
     }
 }
