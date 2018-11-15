@@ -1,6 +1,6 @@
 ﻿namespace Quiz
 {
-    partial class Quizscreen
+    partial class QuizScreen
     {
         /// <summary>
         /// Required designer variable.
@@ -114,6 +114,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Quizscreen";
             this.Text = "Quizscreen";
+            this.Load += new System.EventHandler(this.Quizscreen_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
