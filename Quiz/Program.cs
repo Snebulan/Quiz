@@ -10,7 +10,7 @@ namespace Quiz.Model
     
     static class Program
     {
-        private static Database db = new Database();
+        public static Database db = new Database();
         public static List<User> UserList = db.Users.ToList();
 
         /// <summary>
@@ -21,7 +21,8 @@ namespace Quiz.Model
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Default());
+            Application.Run(new AdminScreen());
+            //Application.Run(new Default());
         }
     }
 }
