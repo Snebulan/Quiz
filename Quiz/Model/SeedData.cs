@@ -63,12 +63,13 @@ namespace Quiz.Model
             {
                 Id = 2,
                 Question = "Vad heter du?",
-            }
+            },
         };
 
         
-    // Add Answers
-    public static Answers[] Answers =
+
+        // Add Answers
+        public static Answers[] Answers =
     {
         new Answers
         {
@@ -91,9 +92,39 @@ namespace Quiz.Model
         new Answers
         {
             Id = 4,
-            Answer = "YLD",
+            Answer = "POD",
             CorrectAnswer = false,
-        }
+        },
+
+
+
+        // Answer number 2
+        new Answers
+        {
+            Id = 5,
+            Answer = "Answer 1",
+            CorrectAnswer = false,
+        },
+
+        new Answers
+        {
+            Id = 6,
+            Answer = "Answer 2",
+            CorrectAnswer = true,
+        },
+        new Answers
+        {
+            Id = 7,
+            Answer = "Answer 3",
+            CorrectAnswer = false,
+        },
+        new Answers
+        {
+            Id = 8,
+            Answer = "Answer 4",
+            CorrectAnswer = false,
+        },
+
     };
 
     }
