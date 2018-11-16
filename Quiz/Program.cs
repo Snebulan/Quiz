@@ -14,6 +14,7 @@ namespace Quiz.Model
         public static List<User> UserList = db.Users.ToList();
         public static List<Answers> AnswersList = db.Answers.ToList();
         public static List<Questions> QuestionsList = db.Questions.ToList();
+        public static List<Quiz> QuizList = db.Quiz.ToList();
         
 
         /// <summary>
