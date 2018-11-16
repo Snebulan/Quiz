@@ -79,28 +79,65 @@ namespace Quiz
         }
 
         TabPage tab;
-        Label lbl;
-        Button btn;
+        Label lblQuestion;
+        Button btn, btnMarker;
 
         public void popluate()
         {
             int questions = Program.QuestionsList.Count;
-            MessageBox.Show(questions.ToString());
+            
             for (int i = 0; i < questions; i++)
             {
-                lbl = new Label();
-                lbl.Text = Program.QuestionsList[i].Question;
-                lbl.Location = new Point(40, 30);
-                lbl.AutoSize = true;
+                // Add a lable for the question.
+                lblQuestion = new Label();
+                lblQuestion.Text = Program.QuestionsList[i].Question;
+                lblQuestion.Location = new Point(40, 30);
+                lblQuestion.AutoSize = true;
+                // Add a new tab for tabControl
                 tab = new TabPage();
                 tab.Name = (i + 1).ToString();
                 tabControl1.TabPages.Add(tab);
-                tabControl1.TabPages[i].Controls.Add(lbl);
+                tabControl1.TabPages[i].Controls.Add(lblQuestion);
+                // Add a button to navigate to questions in tabControl
                 btn = new Button();
                 btn.Text = (i + 1).ToString();
+                btn.Size = new Size(flowLayoutPanel1.Width - 10, 35);
+                btn.BackgroundImageLayout = ImageLayout.None;
                 flowLayoutPanel1.Controls.Add(btn);
+                // Button click event
+                btnMarker = new Button();
+                btnMarker.Name = btn.Text;
+                btnMarker.Size = new Size(35, 35);
+                btnMarker.BackgroundImage = Properties.Resources.flag;
+                btnMarker.BackgroundImageLayout = ImageLayout.Center;
+                btnMarker.Location = new Point(0, 15);
+                tabControl1.TabPages[i].Controls.Add(btnMarker);
+                btnMarker.Click += BtnMarker_Click;
                 btn.Click += Btn_Click;
 
+            }
+        }
+
+        private void BtnMarker_Click(object sender, EventArgs e)
+        {
+            Button btnMark = (Button)sender;
+            foreach(Control btn in flowLayoutPanel1.Controls)
+            {
+                if( btn.GetType()== typeof(Button))
+                {
+                    if(btnMark.Name == btn.Text)
+                    {
+                        if (btn.BackgroundImage == null)
+                        {
+                            btn.BackgroundImage = Properties.Resources.flag;
+                        }
+                        else
+                        {
+                            btn.BackgroundImage = null;
+                        }
+                       
+                    }
+                }
             }
         }
 
