@@ -10,6 +10,7 @@ namespace Quiz.Model
             new User
             {
                 Id = 1,
+                Name = "Admin",
                 Email = "admin@admin.com",
                 Password = "Lösenord",
                 Salt = "Not Implemented",
@@ -18,6 +19,7 @@ namespace Quiz.Model
             new User
             {
                 Id = 2,
+                Name = "Elev",
                 Email = "elev@elev.com",
                 Password = "Lösenord",
                 Salt = "inte implementerat",
