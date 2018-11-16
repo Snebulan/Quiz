@@ -49,7 +49,6 @@ namespace Quiz.Model
             {
                 Id = 1,
                 Name = "IT-Säkerhet",
-                Description = "Säkerhet inom IT",
             }
         };
 

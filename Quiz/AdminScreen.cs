@@ -65,44 +65,45 @@ namespace Quiz
                 }
             }
         }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
+        
+        // Add Question
+        // Will add Quiz (if it doesn't exist)
+        private void addQuestion_Click(object sender, EventArgs e)
         {
-
+            Model.Quiz newQuiz = new Model.Quiz { Name = quiz.Text };
+            Model.Quiz Quiz = Program.QuizList.FirstOrDefault(q => q.Name == quiz.Text);
+            if(Quiz != null)
+            {
+                // Quiz already exists, use it
+                createQuestion();
+            } else
+            {
+                // Create Quiz
+                Program.QuizList.Add(newQuiz);
+                Program.db.Add(newQuiz);
+                Program.db.SaveChanges();
+                MessageBox.Show($"Quiz created!", "Created",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
+        private void createQuestion()
         {
+            Questions newQuestion = new Questions { Question = question.Text };
+            Questions Questions = Program.QuestionsList.FirstOrDefault(q => q.Question == question.Text);
+            if(Questions != null)
+            {
+                // Question already exists!
 
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void AdminScreen_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void student_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void teacher_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
+            } else
+            {
+                // Create Question
+                Program.QuestionsList.Add(newQuestion);
+                Program.db.Add(newQuestion);
+                Program.db.SaveChanges();
+                MessageBox.Show($"Quiz created!", "Created",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
 
         }
     }
