@@ -48,7 +48,7 @@ namespace Quiz.Model
             new Quiz
             {
                 Id = 1,
-                Name = "IT-Säkerhet",
+                Name = "IT-Säkerhet"
             }
         };
 
