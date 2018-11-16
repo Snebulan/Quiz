@@ -23,6 +23,12 @@ namespace Quiz
             //TODO: check each radiobutton if answer is correct from db.
             if (radioButton1.Checked)
             {
+                //User user = db.Users.FirstOrDefault(u => u.Id == id);
+                //db.Users.Remove(user);
+                //db.SaveChanges();
+
+                //Program.AnswersList.FirstOrDefault(u => u.Id == id);
+
                 if (Program.AnswersList[0].CorrectAnswer == true)
                 {
                     MessageBox.Show("Correct");
@@ -55,7 +61,7 @@ namespace Quiz
                 
             }
         }
-
+        
         private void Quizscreen_Load(object sender, EventArgs e)
         {
             label1.Text = Program.QuestionsList[0].Question;
@@ -63,6 +69,7 @@ namespace Quiz
             radioButton2.Text = Program.AnswersList[1].Answer;
             radioButton3.Text = Program.AnswersList[2].Answer;
             radioButton4.Text = Program.AnswersList[3].Answer;
+
         }
     }
 }
