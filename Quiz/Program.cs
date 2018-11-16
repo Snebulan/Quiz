@@ -12,6 +12,9 @@ namespace Quiz.Model
     {
         public static Database db = new Database();
         public static List<User> UserList = db.Users.ToList();
+        public static List<Answers> AnswersList = db.Answers.ToList();
+        public static List<Questions> QuestionsList = db.Questions.ToList();
+        
 
         /// <summary>
         /// The main entry point for the application.

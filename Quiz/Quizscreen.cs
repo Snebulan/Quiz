@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Quiz.Model;
 
 namespace Quiz
 {
@@ -22,28 +23,52 @@ namespace Quiz
             //TODO: check each radiobutton if answer is correct from db.
             if (radioButton1.Checked)
             {
-                MessageBox.Show("fråga1");
+                //User user = db.Users.FirstOrDefault(u => u.Id == id);
+                //db.Users.Remove(user);
+                //db.SaveChanges();
+
+                //Program.AnswersList.FirstOrDefault(u => u.Id == id);
+
+                if (Program.AnswersList[0].CorrectAnswer == true)
+                {
+                    MessageBox.Show("Correct");
+                }
             }
             else if (radioButton2.Checked)
             {
-                MessageBox.Show("fråga2");
+                if (Program.AnswersList[1].CorrectAnswer == true)
+                {
+                    MessageBox.Show("Correct");
+                }
             }
             else if (radioButton3.Checked)
             {
-                MessageBox.Show("fråga3");
+                if (Program.AnswersList[2].CorrectAnswer == true)
+                {
+                    MessageBox.Show("Correct");
+                }
             }
             else if (radioButton4.Checked)
             {
-                MessageBox.Show("fråga4");
+                if (Program.AnswersList[3].CorrectAnswer == true)
+                {
+                    MessageBox.Show("Correct");
+                }
             }
             else
             {
-                MessageBox.Show("inget val");
+                    MessageBox.Show("Fill a button");
+                
             }
         }
-
+        
         private void Quizscreen_Load(object sender, EventArgs e)
         {
+            label1.Text = Program.QuestionsList[0].Question;
+            radioButton1.Text = Program.AnswersList[0].Answer;
+            radioButton2.Text = Program.AnswersList[1].Answer;
+            radioButton3.Text = Program.AnswersList[2].Answer;
+            radioButton4.Text = Program.AnswersList[3].Answer;
 
         }
     }
