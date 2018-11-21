@@ -14,6 +14,7 @@ namespace Quiz
     public partial class Default : Form
     {
         private QuizScreen QZ;
+        private AdminScreen AS;
 
         public Default()
         {
@@ -24,24 +25,31 @@ namespace Quiz
         //checks if email and password is correct.
         private void button1_Click(object sender, EventArgs e)
         {
-            bool email = false;
-            bool password = false;
+            bool login = false;
+            User selectedUser = null;
 
-            if (textBox1.Text == Program.UserList[0].Email)
+            //check users email and password
+            foreach (User user in Program.UserList)
             {
-                //TODO: check if user is admin and choose admin interface instead.
-                //TODO: check if user is public and choose quiz interface.
-                email = true;
+                if (textBox1.Text == user.Email && textBox2.Text == user.Password)
+                {
+                    login = true;
+                    selectedUser = user;
+                }
             }
 
-            if (textBox2.Text == Program.UserList[0].Password)
+            //if login, screen is chosen.
+            if (login == true)
             {
-                password = true;
-            }
-
-            if (email && password)
-            {
-                CreateQuizScreen();
+                if (selectedUser.Role == 1)
+                {
+                    CreateQuizScreen();
+                }
+                else
+                {
+                    CreateAdminScreen();
+                }
+                
             }
         }
 
@@ -57,6 +65,16 @@ namespace Quiz
             QZ.StartPosition = FormStartPosition.Manual;
             QZ.Location = this.Location;
             QZ.Show(this);
+            Hide();
+        }
+
+        private void CreateAdminScreen()
+        {
+            AS = new AdminScreen();
+            AS.Tag = this;
+            AS.StartPosition = FormStartPosition.Manual;
+            AS.Location = this.Location;
+            AS.Show(this);
             Hide();
         }
 
