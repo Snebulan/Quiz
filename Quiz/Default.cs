@@ -37,7 +37,7 @@ namespace Quiz
                     selectedUser = user;
                 }
             }
-
+            
             //if login, screen is chosen.
             if (login == true)
             {

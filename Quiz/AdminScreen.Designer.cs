@@ -43,6 +43,8 @@
             this.label10 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.quiz = new System.Windows.Forms.ComboBox();
             this.addQuestion = new System.Windows.Forms.Button();
             this.checkBox4 = new System.Windows.Forms.CheckBox();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
@@ -56,8 +58,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.question = new System.Windows.Forms.RichTextBox();
-            this.quiz = new System.Windows.Forms.ComboBox();
-            this.label11 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -214,6 +214,23 @@
             this.groupBox2.TabIndex = 9;
             this.groupBox2.TabStop = false;
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(64, 41);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(28, 13);
+            this.label11.TabIndex = 24;
+            this.label11.Text = "Quiz";
+            // 
+            // quiz
+            // 
+            this.quiz.FormattingEnabled = true;
+            this.quiz.Location = new System.Drawing.Point(117, 38);
+            this.quiz.Name = "quiz";
+            this.quiz.Size = new System.Drawing.Size(184, 21);
+            this.quiz.TabIndex = 23;
+            // 
             // addQuestion
             // 
             this.addQuestion.Location = new System.Drawing.Point(139, 282);
@@ -322,23 +339,6 @@
             this.question.Size = new System.Drawing.Size(185, 96);
             this.question.TabIndex = 10;
             this.question.Text = "";
-            // 
-            // quiz
-            // 
-            this.quiz.FormattingEnabled = true;
-            this.quiz.Location = new System.Drawing.Point(117, 38);
-            this.quiz.Name = "quiz";
-            this.quiz.Size = new System.Drawing.Size(184, 21);
-            this.quiz.TabIndex = 23;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(64, 41);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(28, 13);
-            this.label11.TabIndex = 24;
-            this.label11.Text = "Quiz";
             // 
             // AdminScreen
             // 

@@ -89,6 +89,7 @@ namespace Quiz
 
         private void createQuestion()
         {
+            
             Questions newQuestion = new Questions { Question = question.Text };
             Questions Questions = Program.QuestionsList.FirstOrDefault(q => q.Question == question.Text);
             if(Questions != null)
@@ -105,6 +106,6 @@ namespace Quiz
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
-        }
+        }     
     }
 }
