@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -18,23 +19,19 @@ namespace Quiz
 
         public Default()
         {
-            InitializeComponent();   
+            InitializeComponent();
+            
         }
 
         //checks if email and password is correct.
         private void button1_Click(object sender, EventArgs e)
         {
             bool login = false;
-            User selectedUser = null;
+            User selectedUser = Program.UserList.FirstOrDefault(u => u.Email == textBox1.Text);
 
-            //check users email and password
-            foreach (User user in Program.UserList)
+            if (selectedUser != null)
             {
-                if (textBox1.Text == user.Email && textBox2.Text == user.Password)
-                {
-                    login = true;
-                    selectedUser = user;
-                }
+                login = Program.TestPassword(selectedUser, textBox2.Text);
             }
 
             //if login, screen is chosen.
@@ -48,7 +45,11 @@ namespace Quiz
                 {
                     CreateAdminScreen();
                 }
-                
+            }
+            else
+            {
+                MessageBox.Show("Could not login!", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

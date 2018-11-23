@@ -27,8 +27,8 @@ namespace Quiz.Model
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new AdminScreen());
-            //Application.Run(new Default());
-            Application.Run(new QuizScreen());
+            Application.Run(new Default());
+            //Application.Run(new QuizScreen());
         }
 
         // Test users password
@@ -38,26 +38,26 @@ namespace Quiz.Model
         }
 
         // Create salt for MD5
-        private static string CreateSalt()
+        public static string CreateSalt()
         {
             Random rnd = new Random();
             int saltInt = rnd.Next(1000000, 9999999);
             return saltInt.ToString();
         }
-
+        
         // Create a secure password
-        private static string CreatePassword(string inputPassword, string salt)
+        public static string CreatePassword(string inputPassword, string salt)
         {
             return CreateMD5(inputPassword, salt);
         }
 
-        // Encode password with MD5
-        private static string CreateMD5(string input, string salt)
+        // Encode Password with MD5
+        public static string CreateMD5(string input, string salt)
         {
-            // User input string to calculate MD5 hash
+            // Use input string to calculate MD5 hash
             using (System.Security.Cryptography.MD5 md5 = System.Security.Cryptography.MD5.Create())
             {
-                byte[] inputBytes = Encoding.ASCII.GetBytes(salt + input);
+                byte[] inputBytes = Encoding.ASCII.GetBytes(salt + input); // With Salt
                 byte[] hashBytes = md5.ComputeHash(inputBytes);
 
                 // Convert the byte array to hexadecimal string
