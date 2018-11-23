@@ -7,7 +7,7 @@ using Quiz.Model;
 
 namespace Quiz.Model
 {
-    
+
     static class Program
     {
         public static Database db = new Database();
@@ -15,7 +15,7 @@ namespace Quiz.Model
         public static List<Answers> AnswersList = db.Answers.ToList();
         public static List<Questions> QuestionsList = db.Questions.ToList();
         public static List<Quiz> QuizList = db.Quiz.ToList();
-        
+
 
         /// <summary>
         /// The main entry point for the application.
