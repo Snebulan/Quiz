@@ -18,8 +18,7 @@ namespace Quiz
 
         public Default()
         {
-            InitializeComponent();
-            
+            InitializeComponent();   
         }
 
         //checks if email and password is correct.
