@@ -12,8 +12,8 @@ namespace Quiz.Model
                 Id = 1,
                 Name = "Admin",
                 Email = "admin@admin.com",
-                Password = "Lösenord",
-                Salt = "Not Implemented",
+                Password = "9D05D7F28A7BE224DF6573E9605EB9DF", // Lösenord
+                Salt = "2451988",
                 Role = 9,
             },
             new User
@@ -21,26 +21,11 @@ namespace Quiz.Model
                 Id = 2,
                 Name = "Elev",
                 Email = "elev@elev.com",
-                Password = "Lösenord",
-                Salt = "inte implementerat",
+                Password = "DA93CD05B951D8FBA7AA90950339E2C6", // Lösenord
+                Salt = "8897169",
                 Role = 1,
             }
         };
-
-        //public static List<Questions> Questions = new List<Questions>();
-        //public static List<Answers> Answers;
-
-        /*
-        // Add Questions?
-        public static List<Questions> Questions = new List<Questions>()
-        {
-            new Questions
-            {
-                Id = 1,
-                Question = "Vad kallas det gamla sättet att göra kryptering på?",
-            }
-        };
-        */
 
         // Add Quizes
         public static Quiz[] Quizes =
@@ -66,66 +51,63 @@ namespace Quiz.Model
             },
         };
 
-        
-
         // Add Answers
         public static Answers[] Answers =
-    {
-        new Answers
         {
-            Id = 1,
-            Answer = "MD5",
-            CorrectAnswer = true,
-        },
-        new Answers
-        {
-            Id = 2,
-            Answer = "RSA",
-            CorrectAnswer = false,
-        },
-        new Answers
-        {
-            Id = 3,
-            Answer = "POD",
-            CorrectAnswer = false,
-        },
-        new Answers
-        {
-            Id = 4,
-            Answer = "POD",
-            CorrectAnswer = false,
-        },
+            new Answers
+            {
+                Id = 1,
+                Answer = "MD5",
+                CorrectAnswer = true,
+            },
+            new Answers
+            {
+                Id = 2,
+                Answer = "RSA",
+                CorrectAnswer = false,
+            },
+            new Answers
+            {
+                Id = 3,
+                Answer = "POD",
+                CorrectAnswer = false,
+            },
+            new Answers
+            {
+                Id = 4,
+                Answer = "POD",
+                CorrectAnswer = false,
+            },
 
 
 
-        // Answer number 2
-        new Answers
-        {
-            Id = 5,
-            Answer = "Answer 1",
-            CorrectAnswer = false,
-        },
+            // Answer number 2
+            new Answers
+            {
+                Id = 5,
+                Answer = "Answer 1",
+                CorrectAnswer = false,
+            },
 
-        new Answers
-        {
-            Id = 6,
-            Answer = "Answer 2",
-            CorrectAnswer = true,
-        },
-        new Answers
-        {
-            Id = 7,
-            Answer = "Answer 3",
-            CorrectAnswer = false,
-        },
-        new Answers
-        {
-            Id = 8,
-            Answer = "Answer 4",
-            CorrectAnswer = false,
-        },
+            new Answers
+            {
+                Id = 6,
+                Answer = "Answer 2",
+                CorrectAnswer = true,
+            },
+            new Answers
+            {
+                Id = 7,
+                Answer = "Answer 3",
+                CorrectAnswer = false,
+            },
+            new Answers
+            {
+                Id = 8,
+                Answer = "Answer 4",
+                CorrectAnswer = false,
+            },
 
-    };
-
+        };
     }
 }

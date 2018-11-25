@@ -41,13 +41,15 @@
             this.teacher = new System.Windows.Forms.RadioButton();
             this.student = new System.Windows.Forms.RadioButton();
             this.label10 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.addUser = new System.Windows.Forms.Button();
+            this.QuestionBox = new System.Windows.Forms.GroupBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.quiz = new System.Windows.Forms.ComboBox();
             this.addQuestion = new System.Windows.Forms.Button();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkAnswer4 = new System.Windows.Forms.CheckBox();
+            this.checkAnswer3 = new System.Windows.Forms.CheckBox();
+            this.checkAnswer2 = new System.Windows.Forms.CheckBox();
+            this.checkAnswer1 = new System.Windows.Forms.CheckBox();
             this.answer4 = new System.Windows.Forms.TextBox();
             this.answer3 = new System.Windows.Forms.TextBox();
             this.answer2 = new System.Windows.Forms.TextBox();
@@ -56,10 +58,8 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.question = new System.Windows.Forms.RichTextBox();
-            this.quiz = new System.Windows.Forms.ComboBox();
-            this.label11 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.QuestionBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -135,7 +135,7 @@
             this.groupBox1.Controls.Add(this.teacher);
             this.groupBox1.Controls.Add(this.student);
             this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.addUser);
             this.groupBox1.Controls.Add(this.name_text);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label2);
@@ -178,41 +178,58 @@
             this.label10.TabIndex = 12;
             this.label10.Text = "Role";
             // 
-            // button1
+            // addUser
             // 
-            this.button1.Location = new System.Drawing.Point(56, 133);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Add";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.addUser.Location = new System.Drawing.Point(56, 133);
+            this.addUser.Name = "addUser";
+            this.addUser.Size = new System.Drawing.Size(75, 23);
+            this.addUser.TabIndex = 10;
+            this.addUser.Text = "Add";
+            this.addUser.UseVisualStyleBackColor = true;
+            this.addUser.Click += new System.EventHandler(this.button1_Click);
             // 
-            // groupBox2
+            // QuestionBox
             // 
-            this.groupBox2.Controls.Add(this.label11);
-            this.groupBox2.Controls.Add(this.quiz);
-            this.groupBox2.Controls.Add(this.addQuestion);
-            this.groupBox2.Controls.Add(this.checkBox4);
-            this.groupBox2.Controls.Add(this.checkBox3);
-            this.groupBox2.Controls.Add(this.checkBox2);
-            this.groupBox2.Controls.Add(this.checkBox1);
-            this.groupBox2.Controls.Add(this.answer4);
-            this.groupBox2.Controls.Add(this.answer3);
-            this.groupBox2.Controls.Add(this.answer2);
-            this.groupBox2.Controls.Add(this.answer1);
-            this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.question);
-            this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Location = new System.Drawing.Point(365, 65);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(355, 327);
-            this.groupBox2.TabIndex = 9;
-            this.groupBox2.TabStop = false;
+            this.QuestionBox.Controls.Add(this.label11);
+            this.QuestionBox.Controls.Add(this.quiz);
+            this.QuestionBox.Controls.Add(this.addQuestion);
+            this.QuestionBox.Controls.Add(this.checkAnswer4);
+            this.QuestionBox.Controls.Add(this.checkAnswer3);
+            this.QuestionBox.Controls.Add(this.checkAnswer2);
+            this.QuestionBox.Controls.Add(this.checkAnswer1);
+            this.QuestionBox.Controls.Add(this.answer4);
+            this.QuestionBox.Controls.Add(this.answer3);
+            this.QuestionBox.Controls.Add(this.answer2);
+            this.QuestionBox.Controls.Add(this.answer1);
+            this.QuestionBox.Controls.Add(this.label9);
+            this.QuestionBox.Controls.Add(this.label8);
+            this.QuestionBox.Controls.Add(this.label7);
+            this.QuestionBox.Controls.Add(this.question);
+            this.QuestionBox.Controls.Add(this.label4);
+            this.QuestionBox.Controls.Add(this.label5);
+            this.QuestionBox.Controls.Add(this.label6);
+            this.QuestionBox.Location = new System.Drawing.Point(365, 65);
+            this.QuestionBox.Name = "QuestionBox";
+            this.QuestionBox.Size = new System.Drawing.Size(355, 327);
+            this.QuestionBox.TabIndex = 9;
+            this.QuestionBox.TabStop = false;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(64, 41);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(28, 13);
+            this.label11.TabIndex = 24;
+            this.label11.Text = "Quiz";
+            // 
+            // quiz
+            // 
+            this.quiz.FormattingEnabled = true;
+            this.quiz.Location = new System.Drawing.Point(117, 38);
+            this.quiz.Name = "quiz";
+            this.quiz.Size = new System.Drawing.Size(184, 21);
+            this.quiz.TabIndex = 23;
             // 
             // addQuestion
             // 
@@ -220,45 +237,45 @@
             this.addQuestion.Name = "addQuestion";
             this.addQuestion.Size = new System.Drawing.Size(82, 23);
             this.addQuestion.TabIndex = 22;
-            this.addQuestion.Text = "Add Question";
+            this.addQuestion.Text = "Add";
             this.addQuestion.UseVisualStyleBackColor = true;
             this.addQuestion.Click += new System.EventHandler(this.addQuestion_Click);
             // 
-            // checkBox4
+            // checkAnswer4
             // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(39, 250);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(15, 14);
-            this.checkBox4.TabIndex = 21;
-            this.checkBox4.UseVisualStyleBackColor = true;
+            this.checkAnswer4.AutoSize = true;
+            this.checkAnswer4.Location = new System.Drawing.Point(39, 250);
+            this.checkAnswer4.Name = "checkAnswer4";
+            this.checkAnswer4.Size = new System.Drawing.Size(15, 14);
+            this.checkAnswer4.TabIndex = 21;
+            this.checkAnswer4.UseVisualStyleBackColor = true;
             // 
-            // checkBox3
+            // checkAnswer3
             // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(39, 224);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(15, 14);
-            this.checkBox3.TabIndex = 20;
-            this.checkBox3.UseVisualStyleBackColor = true;
+            this.checkAnswer3.AutoSize = true;
+            this.checkAnswer3.Location = new System.Drawing.Point(39, 224);
+            this.checkAnswer3.Name = "checkAnswer3";
+            this.checkAnswer3.Size = new System.Drawing.Size(15, 14);
+            this.checkAnswer3.TabIndex = 20;
+            this.checkAnswer3.UseVisualStyleBackColor = true;
             // 
-            // checkBox2
+            // checkAnswer2
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(39, 198);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(15, 14);
-            this.checkBox2.TabIndex = 19;
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkAnswer2.AutoSize = true;
+            this.checkAnswer2.Location = new System.Drawing.Point(39, 198);
+            this.checkAnswer2.Name = "checkAnswer2";
+            this.checkAnswer2.Size = new System.Drawing.Size(15, 14);
+            this.checkAnswer2.TabIndex = 19;
+            this.checkAnswer2.UseVisualStyleBackColor = true;
             // 
-            // checkBox1
+            // checkAnswer1
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(39, 172);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(15, 14);
-            this.checkBox1.TabIndex = 18;
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkAnswer1.AutoSize = true;
+            this.checkAnswer1.Location = new System.Drawing.Point(39, 172);
+            this.checkAnswer1.Name = "checkAnswer1";
+            this.checkAnswer1.Size = new System.Drawing.Size(15, 14);
+            this.checkAnswer1.TabIndex = 18;
+            this.checkAnswer1.UseVisualStyleBackColor = true;
             // 
             // answer4
             // 
@@ -323,37 +340,21 @@
             this.question.TabIndex = 10;
             this.question.Text = "";
             // 
-            // quiz
-            // 
-            this.quiz.FormattingEnabled = true;
-            this.quiz.Location = new System.Drawing.Point(117, 38);
-            this.quiz.Name = "quiz";
-            this.quiz.Size = new System.Drawing.Size(184, 21);
-            this.quiz.TabIndex = 23;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(64, 41);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(28, 13);
-            this.label11.TabIndex = 24;
-            this.label11.Text = "Quiz";
-            // 
             // AdminScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.QuestionBox);
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AdminScreen";
             this.Text = "AdminScreen";
+            this.Load += new System.EventHandler(this.AdminScreen_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.QuestionBox.ResumeLayout(false);
+            this.QuestionBox.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -369,8 +370,8 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button addUser;
+        private System.Windows.Forms.GroupBox QuestionBox;
         private System.Windows.Forms.RichTextBox question;
         private System.Windows.Forms.TextBox answer4;
         private System.Windows.Forms.TextBox answer3;
@@ -379,10 +380,10 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.CheckBox checkBox4;
-        private System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox checkAnswer4;
+        private System.Windows.Forms.CheckBox checkAnswer3;
+        private System.Windows.Forms.CheckBox checkAnswer2;
+        private System.Windows.Forms.CheckBox checkAnswer1;
         private System.Windows.Forms.Button addQuestion;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.RadioButton teacher;
