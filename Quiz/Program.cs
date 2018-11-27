@@ -17,7 +17,6 @@ namespace Quiz.Model
         public static List<Questions> QuestionsList = db.Questions.ToList();
         public static List<Quiz> QuizList = db.Quiz.ToList();
 
-
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -27,8 +26,9 @@ namespace Quiz.Model
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new AdminScreen());
-            Application.Run(new Default());
-            //Application.Run(new QuizScreen());
+            //Application.Run(new Default());
+            Application.Run(new QuizScreen());
+            //Application.Run(new ListStuff());
         }
 
         // Test users password

@@ -43,9 +43,11 @@ namespace Quiz
         }
 
         TabPage tab;
-        Label lblQuestion;
+        Label lblQuestion, lblAnswer;
         Button btn;
         PictureBox pictureMarker;
+        int locationX;
+        RadioButton rBtn1;
 
         public void popluate()
         {
@@ -88,6 +90,24 @@ namespace Quiz
                 // Button click event
                 pictureMarker.Click += BtnMarker_Click;
                 btn.Click += Btn_Click;
+
+
+                locationX = 60;
+                List<Answers> IdOfQuestion = Program.AnswersList.FindAll(q => q.Questions.Id == i + 1);
+                foreach (var answer in IdOfQuestion)
+                {
+                    // label for every answer in a question.
+                    lblAnswer = new Label();
+                    lblAnswer.Text = answer.Answer;
+                    lblAnswer.Location = new Point(40, locationX += 20);
+                    lblAnswer.AutoSize = true;
+                    tabControl1.TabPages[i].Controls.Add(lblAnswer);
+
+                    // radiobutton for every answer in a question.
+                    rBtn1 = new RadioButton();
+                    rBtn1.Location = new Point(20, (locationX += 20) - 25);
+                    tabControl1.TabPages[i].Controls.Add(rBtn1);
+                }
 
             }
         }
