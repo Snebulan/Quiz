@@ -201,6 +201,12 @@
     <Compile Include="QuizScreen.Designer.cs">
       <DependentUpon>QuizScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="QuizSelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuizSelector.Designer.cs">
+      <DependentUpon>QuizSelector.cs</DependentUpon>
+    </Compile>
     <Compile Include="ResultScreen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -228,6 +234,9 @@
     </Compile>
     <EmbeddedResource Include="QuizScreen.resx">
       <DependentUpon>QuizScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuizSelector.resx">
+      <DependentUpon>QuizSelector.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ResultScreen.resx">
       <DependentUpon>ResultScreen.cs</DependentUpon>
