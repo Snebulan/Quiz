@@ -19,7 +19,7 @@ namespace Quiz
         private ResultScreen RS;
         private TabPage tab;
         private Label lblQuestion, lblAnswer;
-        private Button btn, btnMarker;
+        private Button btn;
         private List<RadioButton> ListOfRadioButtons = new List<RadioButton>();
         private int locationX, questions = 60;
         private Button _lastButtonClicked;
@@ -35,29 +35,24 @@ namespace Quiz
         // Button to go to next question.
         private void button1_Click(object sender, EventArgs e)
         {
-            if(tabControl1.SelectedIndex != tabControl1.TabPages.Count)
+           
+            if (tabControl1.SelectedIndex < tabControl1.TabPages.Count -1)
             {
                 tabControl1.SelectedIndex = tabControl1.SelectedIndex + 1;
+            }
+
+            else
+            {
+                CalculatePoints();
+                CreateResultScreen(points);
             }
         }
 
         private void Quizscreen_Load(object sender, EventArgs e)
         {
-            //label1.Text = Program.QuestionsList[0].Question;
-            //radioButton1.Text = Program.AnswersList[0].Answer;
-            //radioButton2.Text = Program.AnswersList[1].Answer;
-            //radioButton3.Text = Program.AnswersList[2].Answer;
-            //radioButton4.Text = Program.AnswersList[3].Answer;
-            //RadioButton button = new RadioButton();
-            //button.Text = Program.AnswersList[0].Answer;
-            //tabControl1.TabPages[0].Controls.Add(button);
-            //button.Location = new Point(20, 20);
             popluate();
 
         }
-
-        
-        
 
         public void popluate()
         {
@@ -99,7 +94,7 @@ namespace Quiz
 
                 // Button click event
                 pictureMarker.Click += BtnMarker_Click;
-                btn.Click += Btn_Click;
+               
 
                 
                 locationX = 60;
@@ -152,51 +147,39 @@ namespace Quiz
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            Button btnBack = (Button)sender;
             if (tabControl1.SelectedIndex >= 1)
             {
                 tabControl1.SelectedIndex--;
             }
-            btnBack.Click += ClickHandler;
         }
 
-        private void btnNext_Click(object sender, EventArgs e)
-        {    
-            Button btnNext = (Button)sender;
-            tabControl1.SelectedIndex++;
+        
 
-            if (tabControl1.SelectedIndex == tabControl1.TabCount - 1)
-            {
-                btnNext.Text = "END";
-                btnNext.Click += ClickHandler;
-            }
-            else if (tabControl1.SelectedIndex == tabControl1.TabCount)
-            {
-                CalculatePoints();
-                CreateResultScreen(points);
-            }
-            
-            
-        }
-
-        // Button click event for navigating through the questions.
-        private void Btn_Click(object sender, EventArgs e)
+        private void CalculatePoints()
         {
-            Button btn = (Button)sender;
-            tabControl1.SelectedIndex = int.Parse(btn.Text) - 1;
-        }
-
-        // Button for back to previous question
-        private void btnBack_Click(object sender, EventArgs e)
-        {
-            if(tabControl1.SelectedIndex > 0)
+           foreach(var btn in ListOfRadioButtons)
             {
-                tabControl1.SelectedIndex = tabControl1.SelectedIndex - 1;
+                if(btn.Checked && btn.Text == "1")
+                {
+                    points++;
+                }
             }
         }
 
-        // Get the question number and set it to label.
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            label1.Text = (tabControl1.SelectedIndex + 1).ToString();
+            if (tabControl1.SelectedIndex == tabControl1.TabPages.Count - 1)
+            {
+                btnNext.Text = "End";
+            }
+            else
+            {
+                btnNext.Text = "Nästa";
+            }
+        }
+
+        private void CreateResultScreen(int points)
         {
             RS = new ResultScreen(points);
             RS.Tag = this;
@@ -204,22 +187,6 @@ namespace Quiz
             RS.Location = this.Location;
             RS.Show(this);
             Hide();
-        }
-
-        protected void ClickHandler(object sender, EventArgs e)
-        {
-            //if (_lastButtonClicked != null)
-            //    _lastButtonClicked.Text = "NULL";
-
-            _lastButtonClicked = sender as Button;
-            if (_lastButtonClicked == btnNext)
-            {
-                btnNext.Text = "END";
-            }
-            else
-            {
-                btnNext.Text = "Next";
-            }
         }
     }
 }

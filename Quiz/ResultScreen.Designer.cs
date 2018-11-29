@@ -34,16 +34,15 @@
             // lblResult
             // 
             this.lblResult.AutoSize = true;
-            this.lblResult.Location = new System.Drawing.Point(144, 144);
+            this.lblResult.Location = new System.Drawing.Point(245, 206);
             this.lblResult.Name = "lblResult";
-            this.lblResult.Size = new System.Drawing.Size(21, 13);
+            this.lblResult.Size = new System.Drawing.Size(51, 20);
             this.lblResult.TabIndex = 0;
-            this.lblResult.Text = "hej";
-            this.lblResult.Click += new System.EventHandler(this.label1_Click);
+            this.lblResult.Text = "label1";
             // 
             // ResultScreen
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.lblResult);

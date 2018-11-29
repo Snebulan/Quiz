@@ -37,10 +37,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.lblQuestionsCount = new System.Windows.Forms.Label();
-            this.btnEnd = new System.Windows.Forms.Button();
             this.lblQuizTitle = new System.Windows.Forms.Label();
+            this.lblQuestionsCount = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -94,7 +93,6 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.btnEnd);
             this.panel3.Controls.Add(this.btnNext);
             this.panel3.Controls.Add(this.btnBack);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -135,37 +133,6 @@
             this.panel1.Size = new System.Drawing.Size(1000, 64);
             this.panel1.TabIndex = 13;
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(7, 22);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(55, 20);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "Fråga:";
-            // 
-            // lblQuestionsCount
-            // 
-            this.lblQuestionsCount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblQuestionsCount.AutoSize = true;
-            this.lblQuestionsCount.Location = new System.Drawing.Point(860, 23);
-            this.lblQuestionsCount.Name = "lblQuestionsCount";
-            this.lblQuestionsCount.Size = new System.Drawing.Size(96, 20);
-            this.lblQuestionsCount.TabIndex = 11;
-            this.lblQuestionsCount.Text = "Antal frågor:";
-            // 
-            // btnEnd
-            // 
-            this.btnEnd.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEnd.Location = new System.Drawing.Point(864, 31);
-            this.btnEnd.Name = "btnEnd";
-            this.btnEnd.Size = new System.Drawing.Size(112, 35);
-            this.btnEnd.TabIndex = 9;
-            this.btnEnd.Text = "Slutför";
-            this.btnEnd.UseVisualStyleBackColor = true;
-            // 
             // lblQuizTitle
             // 
             this.lblQuizTitle.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -178,6 +145,26 @@
             this.lblQuizTitle.Size = new System.Drawing.Size(105, 25);
             this.lblQuizTitle.TabIndex = 12;
             this.lblQuizTitle.Text = "Quiz Title";
+            // 
+            // lblQuestionsCount
+            // 
+            this.lblQuestionsCount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblQuestionsCount.AutoSize = true;
+            this.lblQuestionsCount.Location = new System.Drawing.Point(860, 23);
+            this.lblQuestionsCount.Name = "lblQuestionsCount";
+            this.lblQuestionsCount.Size = new System.Drawing.Size(96, 20);
+            this.lblQuestionsCount.TabIndex = 11;
+            this.lblQuestionsCount.Text = "Antal frågor:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(7, 22);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(55, 20);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "Fråga:";
             // 
             // QuizScreen
             // 
@@ -212,7 +199,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblQuestionsCount;
-        private System.Windows.Forms.Button btnEnd;
         private System.Windows.Forms.Label lblQuizTitle;
     }
 }
