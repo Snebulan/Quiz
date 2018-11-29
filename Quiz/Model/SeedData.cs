@@ -12,8 +12,8 @@ namespace Quiz.Model
                 Id = 1,
                 Name = "Admin",
                 Email = "admin@admin.com",
-                Password = "Lösenord",
-                Salt = "Not Implemented",
+                Password = "9D05D7F28A7BE224DF6573E9605EB9DF", // Lösenord
+                Salt = "2451988",
                 Role = 9,
             },
             new User
@@ -21,8 +21,8 @@ namespace Quiz.Model
                 Id = 2,
                 Name = "Elev",
                 Email = "elev@elev.com",
-                Password = "Lösenord",
-                Salt = "inte implementerat",
+                Password = "DA93CD05B951D8FBA7AA90950339E2C6", // Lösenord
+                Salt = "8897169",
                 Role = 1,
             }
         };
@@ -59,6 +59,7 @@ namespace Quiz.Model
                 Id = 1,
                 Answer = "MD5",
                 CorrectAnswer = true,
+                
             },
             new Answers
             {

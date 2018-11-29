@@ -40,13 +40,16 @@ namespace Quiz
                 role = 9;
             }
             string Pass = GeneratePassword(5);
+            string salt = Program.CreateSalt();
+            string password = Program.CreatePassword(Pass, salt);
             // Add user to db
             User newUser = new User
             {
                 Name = name_text.Text,
                 Email = email_text.Text,
                 Role = role,
-                Password = Pass,
+                Password = password,
+                Salt = salt,
             };
             User user = Program.UserList.FirstOrDefault(u => u.Email == email_text.Text);
             if (user != null)
