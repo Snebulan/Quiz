@@ -59,6 +59,7 @@ namespace Quiz.Model
                 Id = 1,
                 Answer = "MD5",
                 CorrectAnswer = true,
+                
             },
             new Answers
             {
