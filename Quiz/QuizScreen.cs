@@ -19,41 +19,50 @@ namespace Quiz
         private ResultScreen RS;
         private TabPage tab;
         private Label lblQuestion, lblAnswer;
-        private Button btn, btnMarker;
+        private Button btn;
         private List<RadioButton> ListOfRadioButtons = new List<RadioButton>();
-        int locationX, questions = 60;
+        private int locationX, questions = 60;
+        private Button _lastButtonClicked;
+        PictureBox pictureMarker;
 
-        
+
 
         public QuizScreen()
         {
             InitializeComponent();
         }
 
+        // Button to go to next question.
+        private void button1_Click(object sender, EventArgs e)
+        {
+           
+            if (tabControl1.SelectedIndex < tabControl1.TabPages.Count -1)
+            {
+                tabControl1.SelectedIndex = tabControl1.SelectedIndex + 1;
+            }
+
+            else
+            {
+                CalculatePoints();
+                CreateResultScreen(points);
+            }
+        }
 
         private void Quizscreen_Load(object sender, EventArgs e)
         {
-
-            //label1.Text = Program.QuestionsList[0].Question;
-            //radioButton1.Text = Program.AnswersList[0].Answer;
-            //radioButton2.Text = Program.AnswersList[1].Answer;
-            //radioButton3.Text = Program.AnswersList[2].Answer;
-            //radioButton4.Text = Program.AnswersList[3].Answer;
-            //RadioButton button = new RadioButton();
-            //button.Text = Program.AnswersList[0].Answer;
-            //tabControl1.TabPages[0].Controls.Add(button);
-            //button.Location = new Point(20, 20);
             popluate();
 
         }
 
-        
-
         public void popluate()
         {
-            questions = Program.QuestionsList.Count;
+            // Count the question to loop throught.
+            int questionsCount = Program.QuestionsList.Count;
 
-            for (int i = 0; i < questions; i++)
+            // Set the question count to label.
+            lblQuestionsCount.Text = "Antal frågor: " + questionsCount.ToString();
+
+            for (int i = 0; i < questionsCount; i++)
             {
                 // Add a lable for the question.
                 lblQuestion = new Label();
@@ -74,16 +83,18 @@ namespace Quiz
                 btn.BackgroundImageLayout = ImageLayout.None;
                 flowLayoutPanel1.Controls.Add(btn);
 
+                // Add a marker for a questions.
+                pictureMarker = new PictureBox();
+                pictureMarker.Name = btn.Text;
+                pictureMarker.Size = new Size(35, 35);
+                pictureMarker.BackgroundImage = Properties.Resources.flag;
+                pictureMarker.BackgroundImageLayout = ImageLayout.Center;
+                pictureMarker.Location = new Point(0, 15);
+                tabControl1.TabPages[i].Controls.Add(pictureMarker);
+
                 // Button click event
-                btnMarker = new Button();
-                btnMarker.Name = btn.Text;
-                btnMarker.Size = new Size(35, 35);
-                btnMarker.BackgroundImage = Properties.Resources.flag;
-                btnMarker.BackgroundImageLayout = ImageLayout.Center;
-                btnMarker.Location = new Point(0, 15);
-                tabControl1.TabPages[i].Controls.Add(btnMarker);
-                btnMarker.Click += BtnMarker_Click;
-                btn.Click += Btn_Click;
+                pictureMarker.Click += BtnMarker_Click;
+               
 
                 
                 locationX = 60;
@@ -99,7 +110,6 @@ namespace Quiz
                     tabControl1.TabPages[i].Controls.Add(lblAnswer);
 
                     // radiobutton for every answer in a question.
-                    
                     ListOfRadioButtons.Add(new RadioButton());
                     ListOfRadioButtons[answer.Id - 1].Location = new Point(20, (locationX += 20) - 25);
                     tabControl1.TabPages[i].Controls.Add(ListOfRadioButtons[answer.Id - 1]);
@@ -111,14 +121,15 @@ namespace Quiz
             }  
         }
 
+        // marker button click event for marking the question.
         private void BtnMarker_Click(object sender, EventArgs e)
         {
-            Button btnMark = (Button)sender;
-            foreach(Control btn in flowLayoutPanel1.Controls)
+            PictureBox btnMark = (PictureBox)sender;
+            foreach (Control btn in flowLayoutPanel1.Controls)
             {
-                if( btn.GetType()== typeof(Button))
+                if (btn.GetType() == typeof(Button))
                 {
-                    if(btnMark.Name == btn.Text)
+                    if (btnMark.Name == btn.Text)
                     {
                         if (btn.BackgroundImage == null)
                         {
@@ -136,54 +147,40 @@ namespace Quiz
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            Button btnNext = (Button)sender;
             if (tabControl1.SelectedIndex >= 1)
             {
                 tabControl1.SelectedIndex--;
             }
         }
 
-        private void btnNext_Click(object sender, EventArgs e)
-        {
-            
-            Button btnNext = (Button)sender;
-            if (tabControl1.SelectedIndex == tabControl1.TabCount - 2)
-            {
-                btnNext.Text = "END";
-            }
-            else if (tabControl1.SelectedIndex == tabControl1.TabCount - 1)
-            {
-                CalculatePoints();
-                CreateResultScreen(points);
-    }
-            tabControl1.SelectedIndex++; 
-        }
-
-        private void Btn_Click(object sender, EventArgs e)
-        {
-            Button btn = (Button)sender;
-            tabControl1.SelectedIndex = int.Parse(btn.Text) - 1;
-        }
-
-        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            label1.Text = (tabControl1.SelectedIndex + 1).ToString();
-        }
+        
 
         private void CalculatePoints()
         {
-            foreach (var radioButton in ListOfRadioButtons)
+           foreach(var btn in ListOfRadioButtons)
             {
-                if (radioButton.Checked && radioButton.Text == "1")
+                if(btn.Checked && btn.Text == "1")
                 {
                     points++;
                 }
             }
         }
 
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            label1.Text = (tabControl1.SelectedIndex + 1).ToString();
+            if (tabControl1.SelectedIndex == tabControl1.TabPages.Count - 1)
+            {
+                btnNext.Text = "End";
+            }
+            else
+            {
+                btnNext.Text = "Nästa";
+            }
+        }
+
         private void CreateResultScreen(int points)
         {
-            
             RS = new ResultScreen(points);
             RS.Tag = this;
             RS.StartPosition = FormStartPosition.Manual;
