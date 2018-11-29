@@ -23,6 +23,7 @@ namespace Quiz
         private List<RadioButton> ListOfRadioButtons = new List<RadioButton>();
         private int locationX, questions = 60;
         private Button _lastButtonClicked;
+        PictureBox pictureMarker;
 
 
 
@@ -31,10 +32,17 @@ namespace Quiz
             InitializeComponent();
         }
 
+        // Button to go to next question.
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if(tabControl1.SelectedIndex != tabControl1.TabPages.Count)
+            {
+                tabControl1.SelectedIndex = tabControl1.SelectedIndex + 1;
+            }
+        }
 
         private void Quizscreen_Load(object sender, EventArgs e)
         {
-
             //label1.Text = Program.QuestionsList[0].Question;
             //radioButton1.Text = Program.AnswersList[0].Answer;
             //radioButton2.Text = Program.AnswersList[1].Answer;
@@ -49,12 +57,17 @@ namespace Quiz
         }
 
         
+        
 
         public void popluate()
         {
-            questions = Program.QuestionsList.Count;
+            // Count the question to loop throught.
+            int questionsCount = Program.QuestionsList.Count;
 
-            for (int i = 0; i < questions; i++)
+            // Set the question count to label.
+            lblQuestionsCount.Text = "Antal frågor: " + questionsCount.ToString();
+
+            for (int i = 0; i < questionsCount; i++)
             {
                 // Add a lable for the question.
                 lblQuestion = new Label();
@@ -75,15 +88,17 @@ namespace Quiz
                 btn.BackgroundImageLayout = ImageLayout.None;
                 flowLayoutPanel1.Controls.Add(btn);
 
+                // Add a marker for a questions.
+                pictureMarker = new PictureBox();
+                pictureMarker.Name = btn.Text;
+                pictureMarker.Size = new Size(35, 35);
+                pictureMarker.BackgroundImage = Properties.Resources.flag;
+                pictureMarker.BackgroundImageLayout = ImageLayout.Center;
+                pictureMarker.Location = new Point(0, 15);
+                tabControl1.TabPages[i].Controls.Add(pictureMarker);
+
                 // Button click event
-                btnMarker = new Button();
-                btnMarker.Name = btn.Text;
-                btnMarker.Size = new Size(35, 35);
-                btnMarker.BackgroundImage = Properties.Resources.flag;
-                btnMarker.BackgroundImageLayout = ImageLayout.Center;
-                btnMarker.Location = new Point(0, 15);
-                tabControl1.TabPages[i].Controls.Add(btnMarker);
-                btnMarker.Click += BtnMarker_Click;
+                pictureMarker.Click += BtnMarker_Click;
                 btn.Click += Btn_Click;
 
                 
@@ -111,14 +126,15 @@ namespace Quiz
             }  
         }
 
+        // marker button click event for marking the question.
         private void BtnMarker_Click(object sender, EventArgs e)
         {
-            Button btnMark = (Button)sender;
-            foreach(Control btn in flowLayoutPanel1.Controls)
+            PictureBox btnMark = (PictureBox)sender;
+            foreach (Control btn in flowLayoutPanel1.Controls)
             {
-                if( btn.GetType()== typeof(Button))
+                if (btn.GetType() == typeof(Button))
                 {
-                    if(btnMark.Name == btn.Text)
+                    if (btnMark.Name == btn.Text)
                     {
                         if (btn.BackgroundImage == null)
                         {
@@ -163,30 +179,24 @@ namespace Quiz
             
         }
 
+        // Button click event for navigating through the questions.
         private void Btn_Click(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
             tabControl1.SelectedIndex = int.Parse(btn.Text) - 1;
-            btn.Click += ClickHandler;
         }
 
-        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        // Button for back to previous question
+        private void btnBack_Click(object sender, EventArgs e)
         {
-            label1.Text = (tabControl1.SelectedIndex + 1).ToString();
-        }
-
-        private void CalculatePoints()
-        {
-            foreach (var radioButton in ListOfRadioButtons)
+            if(tabControl1.SelectedIndex > 0)
             {
-                if (radioButton.Checked && radioButton.Text == "1")
-                {
-                    points++;
-                }
+                tabControl1.SelectedIndex = tabControl1.SelectedIndex - 1;
             }
         }
 
-        private void CreateResultScreen(int points)
+        // Get the question number and set it to label.
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
             RS = new ResultScreen(points);
             RS.Tag = this;
