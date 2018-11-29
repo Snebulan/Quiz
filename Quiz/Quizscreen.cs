@@ -18,53 +18,17 @@ namespace Quiz
             InitializeComponent();
         }
 
+        // Button to go to next question.
         private void button1_Click(object sender, EventArgs e)
         {
-            //TODO: check each radiobutton if answer is correct from db.
-            //if (radioButton1.Checked)
-            //{
-            //    //User user = db.Users.FirstOrDefault(u => u.Id == id);
-            //    //db.Users.Remove(user);
-            //    //db.SaveChanges();
-
-            //    //Program.AnswersList.FirstOrDefault(u => u.Id == id);
-
-            //    if (Program.AnswersList[0].CorrectAnswer == true)
-            //    {
-            //        MessageBox.Show("Correct");
-            //    }
-            //}
-            //else if (radioButton2.Checked)
-            //{
-            //    if (Program.AnswersList[1].CorrectAnswer == true)
-            //    {
-            //        MessageBox.Show("Correct");
-            //    }
-            //}
-            //else if (radioButton3.Checked)
-            //{
-            //    if (Program.AnswersList[2].CorrectAnswer == true)
-            //    {
-            //        MessageBox.Show("Correct");
-            //    }
-            //}
-            //else if (radioButton4.Checked)
-            //{
-            //    if (Program.AnswersList[3].CorrectAnswer == true)
-            //    {
-            //        MessageBox.Show("Correct");
-            //    }
-            //}
-            //else
-            //{
-            //        MessageBox.Show("Fill a button");
-
-            //}
+            if(tabControl1.SelectedIndex != tabControl1.TabPages.Count)
+            {
+                tabControl1.SelectedIndex = tabControl1.SelectedIndex + 1;
+            }
         }
 
         private void Quizscreen_Load(object sender, EventArgs e)
         {
-
             //label1.Text = Program.QuestionsList[0].Question;
             //radioButton1.Text = Program.AnswersList[0].Answer;
             //radioButton2.Text = Program.AnswersList[1].Answer;
@@ -79,37 +43,94 @@ namespace Quiz
         }
 
         TabPage tab;
-        Label lbl;
+        Label lblQuestion;
         Button btn;
+        PictureBox pictureMarker;
 
         public void popluate()
         {
-            int questions = Program.QuestionsList.Count;
-            MessageBox.Show(questions.ToString());
-            for (int i = 0; i < questions; i++)
+            // Count the question to loop throught.
+            int questionsCount = Program.QuestionsList.Count;
+
+            // Set the question count to label.
+            lblQuestionsCount.Text = "Antal frågor: " + questionsCount.ToString();
+
+            for (int i = 0; i < questionsCount; i++)
             {
-                lbl = new Label();
-                lbl.Text = Program.QuestionsList[i].Question;
-                lbl.Location = new Point(40, 30);
-                lbl.AutoSize = true;
+                // Add a lable for the question.
+                lblQuestion = new Label();
+                lblQuestion.Text = Program.QuestionsList[i].Question;
+                lblQuestion.Location = new Point(40, 30);
+                lblQuestion.AutoSize = true;
+
+                // Add a new tab for tabControl
                 tab = new TabPage();
                 tab.Name = (i + 1).ToString();
                 tabControl1.TabPages.Add(tab);
-                tabControl1.TabPages[i].Controls.Add(lbl);
+                tabControl1.TabPages[i].Controls.Add(lblQuestion);
+
+                // Add a button to navigate to questions in tabControl
                 btn = new Button();
                 btn.Text = (i + 1).ToString();
+                btn.Size = new Size(flowLayoutPanel1.Width - 10, 35);
+                btn.BackgroundImageLayout = ImageLayout.None;
                 flowLayoutPanel1.Controls.Add(btn);
-                btn.Click += Btn_Click;
 
+                // Add a marker for a questions.
+                pictureMarker = new PictureBox();
+                pictureMarker.Name = btn.Text;
+                pictureMarker.Size = new Size(35, 35);
+                pictureMarker.BackgroundImage = Properties.Resources.flag;
+                pictureMarker.BackgroundImageLayout = ImageLayout.Center;
+                pictureMarker.Location = new Point(0, 15);
+                tabControl1.TabPages[i].Controls.Add(pictureMarker);
+
+                // Button click event
+                pictureMarker.Click += BtnMarker_Click;
+                btn.Click += Btn_Click;
             }
         }
 
+        // marker button click event for marking the question.
+        private void BtnMarker_Click(object sender, EventArgs e)
+        {
+            PictureBox btnMark = (PictureBox)sender;
+            foreach (Control btn in flowLayoutPanel1.Controls)
+            {
+                if (btn.GetType() == typeof(Button))
+                {
+                    if (btnMark.Name == btn.Text)
+                    {
+                        if (btn.BackgroundImage == null)
+                        {
+                            btn.BackgroundImage = Properties.Resources.flag;
+                        }
+                        else
+                        {
+                            btn.BackgroundImage = null;
+                        }
+                    }
+                }
+            }
+        }
+
+        // Button click event for navigating through the questions.
         private void Btn_Click(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
             tabControl1.SelectedIndex = int.Parse(btn.Text) - 1;
         }
 
+        // Button for back to previous question
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            if(tabControl1.SelectedIndex > 0)
+            {
+                tabControl1.SelectedIndex = tabControl1.SelectedIndex - 1;
+            }
+        }
+
+        // Get the question number and set it to label.
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
             label1.Text = (tabControl1.SelectedIndex + 1).ToString();
