@@ -50,12 +50,12 @@ namespace Quiz
         public void popluate()
         {
             // Count the question to loop throught.
-            int questions = Program.QuestionsList.Count;
+            int questionsCount = Program.QuestionsList.Count;
 
             // Set the question count to label.
-            lblQuestionsCount.Text = "Antal frågor: " + questions.ToString();
+            lblQuestionsCount.Text = "Antal frågor: " + questionsCount.ToString();
 
-            for (int i = 0; i < questions; i++)
+            for (int i = 0; i < questionsCount; i++)
             {
                 // Add a lable for the question.
                 lblQuestion = new Label();
@@ -88,7 +88,6 @@ namespace Quiz
                 // Button click event
                 pictureMarker.Click += BtnMarker_Click;
                 btn.Click += Btn_Click;
-
             }
         }
 

@@ -39,6 +39,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.lblQuestionsCount = new System.Windows.Forms.Label();
+            this.btnEnd = new System.Windows.Forms.Button();
+            this.lblQuizTitle = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -76,7 +78,7 @@
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(112, 35);
             this.btnBack.TabIndex = 8;
-            this.btnBack.Text = "Back";
+            this.btnBack.Text = "Tillbaka";
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
@@ -92,6 +94,7 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.btnEnd);
             this.panel3.Controls.Add(this.btnNext);
             this.panel3.Controls.Add(this.btnBack);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -121,6 +124,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.lblQuizTitle);
             this.panel1.Controls.Add(this.lblQuestionsCount);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
@@ -150,6 +154,30 @@
             this.lblQuestionsCount.Size = new System.Drawing.Size(96, 20);
             this.lblQuestionsCount.TabIndex = 11;
             this.lblQuestionsCount.Text = "Antal frågor:";
+            // 
+            // btnEnd
+            // 
+            this.btnEnd.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEnd.Location = new System.Drawing.Point(864, 31);
+            this.btnEnd.Name = "btnEnd";
+            this.btnEnd.Size = new System.Drawing.Size(112, 35);
+            this.btnEnd.TabIndex = 9;
+            this.btnEnd.Text = "Slutför";
+            this.btnEnd.UseVisualStyleBackColor = true;
+            // 
+            // lblQuizTitle
+            // 
+            this.lblQuizTitle.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblQuizTitle.AutoSize = true;
+            this.lblQuizTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblQuizTitle.Location = new System.Drawing.Point(470, 22);
+            this.lblQuizTitle.Name = "lblQuizTitle";
+            this.lblQuizTitle.Size = new System.Drawing.Size(105, 25);
+            this.lblQuizTitle.TabIndex = 12;
+            this.lblQuizTitle.Text = "Quiz Title";
             // 
             // QuizScreen
             // 
@@ -184,5 +212,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblQuestionsCount;
+        private System.Windows.Forms.Button btnEnd;
+        private System.Windows.Forms.Label lblQuizTitle;
     }
 }
