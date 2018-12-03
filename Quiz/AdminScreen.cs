@@ -216,6 +216,12 @@ namespace Quiz
         // Select quiz and show questions within
         private void quizList_SelectedIndexChanged(object sender, EventArgs e)
         {
+            RefreshQuestionsList();
+        }
+
+        // Update Questions list combobox
+        public void RefreshQuestionsList()
+        {
             questionsList.Items.Clear();
             string selected = quizList.SelectedItem.ToString();
             List<Questions> questions = Program.QuestionsList.Where(q => q.Quiz.Name == selected).ToList();
@@ -226,18 +232,19 @@ namespace Quiz
         }
 
         // Show Dialog
-        public void ShowMyDialogBox(string Prompt, string Title = "Edit Dialog")
+        public string ShowMyDialogBox(string Prompt, string EditedValue, string Title = "Edit Dialog")
         {
             Dialog testDialog = new Dialog();
             testDialog.Text = Title;
-            testDialog.Prompt.Text = Prompt;
+            testDialog.Prompt.Text = Prompt + EditedValue;
             // Show testDialog as a modal dialog and determine if DialogResult = OK.
             if (testDialog.ShowDialog(this) == DialogResult.OK)
             {
                 // Read the contents of testDialog's TextBox.
-                this.txtResult.Text = testDialog.TextBox1.Text;
+                EditedValue = testDialog.TextBox1.Text;
             }
             testDialog.Dispose();
+            return EditedValue;
         }
 
         // Show prompt to edit Quiz name
@@ -245,7 +252,11 @@ namespace Quiz
         {
             if (quizList.SelectedItem != null)
             {
-                ShowMyDialogBox($"Change name on {quizList.SelectedItem.ToString()}", "Edit quiz name");
+                var NewName = ShowMyDialogBox($"Change name on ", quizList.SelectedItem.ToString(), "Edit quiz name");
+                Program.QuizList.FirstOrDefault(q => q.Name == quizList.SelectedItem.ToString()).Name = NewName;
+                Program.db.Quiz.FirstOrDefault(q => q.Name == quizList.SelectedItem.ToString()).Name = NewName;
+                Program.db.SaveChanges();
+                PopulateComboBoxes();
             }
         }
 
@@ -254,7 +265,11 @@ namespace Quiz
         {
             if (questionsList.SelectedItem != null)
             {
-                ShowMyDialogBox($"Change name on {questionsList.SelectedItem.ToString()}", "Edit question name");
+                var NewName = ShowMyDialogBox($"Change name on ", questionsList.SelectedItem.ToString(), "Edit question name");
+                Program.QuestionsList.FirstOrDefault(q => q.Question == questionsList.SelectedItem.ToString()).Question = NewName;
+                Program.db.Questions.FirstOrDefault(q => q.Question == questionsList.SelectedItem.ToString()).Question = NewName;
+                Program.db.SaveChanges();
+                RefreshQuestionsList();
             }
         }
 

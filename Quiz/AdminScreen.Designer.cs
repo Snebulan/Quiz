@@ -76,7 +76,6 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.adminPanel = new System.Windows.Forms.Panel();
-            this.txtResult = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.QuestionBox.SuspendLayout();
             this.editUserBox.SuspendLayout();
@@ -424,7 +423,6 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.txtResult);
             this.groupBox2.Controls.Add(this.deleteQuestion);
             this.groupBox2.Controls.Add(this.deleteQuiz);
             this.groupBox2.Controls.Add(this.label17);
@@ -548,13 +546,6 @@
             this.adminPanel.Size = new System.Drawing.Size(880, 346);
             this.adminPanel.TabIndex = 5;
             // 
-            // txtResult
-            // 
-            this.txtResult.Location = new System.Drawing.Point(76, 280);
-            this.txtResult.Name = "txtResult";
-            this.txtResult.Size = new System.Drawing.Size(143, 20);
-            this.txtResult.TabIndex = 10;
-            // 
             // AdminScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -628,6 +619,5 @@
         private System.Windows.Forms.Button deleteQuestion;
         private System.Windows.Forms.Button deleteQuiz;
         private System.Windows.Forms.Panel adminPanel;
-        private System.Windows.Forms.TextBox txtResult;
     }
 }
