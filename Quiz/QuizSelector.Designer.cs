@@ -30,7 +30,7 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnChoose = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -44,31 +44,34 @@
             // 
             // comboBox1
             // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(198, 26);
+            this.comboBox1.Location = new System.Drawing.Point(162, 31);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 28);
+            this.comboBox1.Size = new System.Drawing.Size(154, 28);
             this.comboBox1.TabIndex = 1;
             // 
-            // button1
+            // btnChoose
             // 
-            this.button1.Location = new System.Drawing.Point(362, 22);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnChoose.Location = new System.Drawing.Point(338, 27);
+            this.btnChoose.Name = "btnChoose";
+            this.btnChoose.Size = new System.Drawing.Size(104, 35);
+            this.btnChoose.TabIndex = 2;
+            this.btnChoose.Text = "Börja";
+            this.btnChoose.UseVisualStyleBackColor = true;
+            this.btnChoose.Click += new System.EventHandler(this.btnChoose_Click);
             // 
             // QuizSelector
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(579, 159);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(477, 95);
+            this.Controls.Add(this.btnChoose);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label1);
             this.Name = "QuizSelector";
             this.Text = "QuizSelector";
+            this.Load += new System.EventHandler(this.QuizSelector_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -78,6 +81,6 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnChoose;
     }
 }

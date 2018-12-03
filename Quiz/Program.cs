@@ -29,6 +29,7 @@ namespace Quiz.Model
             Application.Run(new Default());
             //Application.Run(new QuizScreen());
             //Application.Run(new ListStuff());
+            Application.Run(new QuizSelector());
         }
 
         // Test users password
