@@ -19,17 +19,19 @@ namespace Quiz
         }
 
         private int points;
+        private int totalPoints;
 
-        public ResultScreen(int points)
+        public ResultScreen(int points, int totalPoints)
         {
             InitializeComponent();
             this.points = points;
+            this.totalPoints = totalPoints;
         }
 
 
         private void ResultScreen_Load(object sender, EventArgs e)
         {
-            lblResult.Text = $"You goint {points} rights out of {Program.QuestionsList.Count}!";
+            lblResult.Text = $"You goint {points} rights out of {totalPoints}!";
         }
     }
 }

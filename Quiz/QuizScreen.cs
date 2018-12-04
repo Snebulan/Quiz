@@ -29,6 +29,7 @@ namespace Quiz
         private int quizId;
         Timer timer;
         Stopwatch sw;
+        int questionsCount;
 
         public QuizScreen()
         {
@@ -37,6 +38,7 @@ namespace Quiz
 
         public QuizScreen(string quizName, int quizId)
         {
+            InitializeComponent();
             this.quizName = quizName;
             this.quizId = quizId;
         }
@@ -63,19 +65,27 @@ namespace Quiz
 
         }
 
+        List<string> questionsList = new List<string>();
         public void popluate()
         {
+            foreach(var question in Program.QuestionsList)
+            {
+                if(question.Quiz.Id == quizId)
+                {
+                    questionsList.Add(question.Question);
+                }
+            }
             // Count the question to loop throught.
-            int questionsCount = Program.QuestionsList.Count;
+            questionsCount = Program.QuestionsList.FindAll(q => q.Quiz.Id == quizId).Count();
 
             // Set the question count to label.
             lblQuestionsCount.Text = "Antal frågor: " + questionsCount.ToString();
 
-            for (int i = 0; i < questionsCount; i++)
+            for (int i = 0; i < questionsList.Count(); i++)
             {
                 // Add a lable for the question.
                 lblQuestion = new Label();
-                lblQuestion.Text = Program.QuestionsList[i].Question;
+                lblQuestion.Text = questionsList[i];
                 lblQuestion.Location = new Point(40, 30);
                 lblQuestion.AutoSize = true;
 
@@ -91,6 +101,7 @@ namespace Quiz
                 btn.Size = new Size(flowLayoutPanel1.Width - 10, 35);
                 btn.BackgroundImageLayout = ImageLayout.None;
                 flowLayoutPanel1.Controls.Add(btn);
+                btn.Click += Btn_Click;
 
                 // Add a marker for a questions.
                 pictureMarker = new PictureBox();
@@ -128,6 +139,12 @@ namespace Quiz
                     }
                 }
             }  
+        }
+
+        private void Btn_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            tabControl1.SelectedTab = tabControl1.TabPages[btn.Text];
         }
 
         // marker button click event for marking the question.
@@ -207,7 +224,7 @@ namespace Quiz
 
         private void CreateResultScreen(int points)
         {
-            RS = new ResultScreen(points);
+            RS = new ResultScreen(points,questionsCount);
             RS.Tag = this;
             RS.StartPosition = FormStartPosition.Manual;
             RS.Location = this.Location;
