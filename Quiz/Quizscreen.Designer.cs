@@ -191,11 +191,11 @@
             this.Time_lbl.Size = new System.Drawing.Size(30, 13);
             this.Time_lbl.TabIndex = 14;
             this.Time_lbl.Text = "Time";
-            this.Time_lbl.Click += new System.EventHandler(this.Time_lbl_Click);
+            //this.Time_lbl.Click += new System.EventHandler(this.Time_lbl_Click);
             // 
             // timer1
             // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            //this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // QuizScreen
             // 

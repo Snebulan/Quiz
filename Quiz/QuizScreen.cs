@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -25,10 +24,9 @@ namespace Quiz
         private int locationX, questions = 60;
         private Button _lastButtonClicked;
         PictureBox pictureMarker;
-        private string quizName;
-        private int quizId;
-        Timer timer;
-        Stopwatch sw;
+        string quizName;
+        int quizId;
+
 
         public QuizScreen()
         {
@@ -37,6 +35,7 @@ namespace Quiz
 
         public QuizScreen(string quizName, int quizId)
         {
+            InitializeComponent();
             this.quizName = quizName;
             this.quizId = quizId;
         }
@@ -59,14 +58,24 @@ namespace Quiz
 
         private void Quizscreen_Load(object sender, EventArgs e)
         {
+            lblQuizTitle.Text = quizName;
             popluate();
-
         }
 
+        // list to add matched questions in it
+        List<string> quizQuestions = new List<string>();
         public void popluate()
         {
+            // Loop through the questions to get the questions id that match the quiz id.
+            foreach(var question in Program.QuestionsList)
+            {
+                if(question.questionId == quizId)
+                {
+                    quizQuestions.Add(question.Question);
+                }
+            }
             // Count the question to loop throught.
-            int questionsCount = Program.QuestionsList.Count;
+            int questionsCount = Program.QuestionsList.FindAll(q => q.questionId == quizId).Count();
 
             // Set the question count to label.
             lblQuestionsCount.Text = "Antal frågor: " + questionsCount.ToString();
@@ -75,7 +84,7 @@ namespace Quiz
             {
                 // Add a lable for the question.
                 lblQuestion = new Label();
-                lblQuestion.Text = Program.QuestionsList[i].Question;
+                lblQuestion.Text = quizQuestions[i];
                 lblQuestion.Location = new Point(40, 30);
                 lblQuestion.AutoSize = true;
 
@@ -91,6 +100,7 @@ namespace Quiz
                 btn.Size = new Size(flowLayoutPanel1.Width - 10, 35);
                 btn.BackgroundImageLayout = ImageLayout.None;
                 flowLayoutPanel1.Controls.Add(btn);
+                btn.Click += Btn_Click;
 
                 // Add a marker for a questions.
                 pictureMarker = new PictureBox();
@@ -128,6 +138,13 @@ namespace Quiz
                     }
                 }
             }  
+        }
+
+        // Navigate questions in flowlayout panel.
+        private void Btn_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            tabControl1.SelectedTab = tabControl1.TabPages[btn.Text];
         }
 
         // marker button click event for marking the question.
@@ -173,23 +190,6 @@ namespace Quiz
                     points++;
                 }
             }
-        }
-
-        private void Time_lbl_Click(object sender, EventArgs e)
-        {
-            timer = new Timer();
-            timer.Interval = (1000);
-            timer.Tick += new EventHandler(timer1_Tick);
-            sw = new Stopwatch();
-            timer.Start();
-            sw.Start();
-        }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            Time_lbl.Text = "Running for " + sw.Elapsed.Seconds.ToString() + " seconds";
-            Application.DoEvents();
-            
         }
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
