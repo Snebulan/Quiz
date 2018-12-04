@@ -47,7 +47,7 @@ namespace Quiz.Model
             new Questions
             {
                 Id = 2,
-                Question = "Vad heter du?",
+                Question = "Vilken programmering språk är den bästa?",
             },
         };
 
@@ -86,26 +86,26 @@ namespace Quiz.Model
             new Answers
             {
                 Id = 5,
-                Answer = "Answer 1",
+                Answer = "C#",
                 CorrectAnswer = false,
             },
 
             new Answers
             {
                 Id = 6,
-                Answer = "Answer 2",
+                Answer = "C#",
                 CorrectAnswer = true,
             },
             new Answers
             {
                 Id = 7,
-                Answer = "Answer 3",
+                Answer = "C#",
                 CorrectAnswer = false,
             },
             new Answers
             {
                 Id = 8,
-                Answer = "Answer 4",
+                Answer = "också C#",
                 CorrectAnswer = false,
             },
 
