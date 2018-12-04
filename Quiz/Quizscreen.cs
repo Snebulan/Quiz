@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -24,12 +25,20 @@ namespace Quiz
         private int locationX, questions = 60;
         private Button _lastButtonClicked;
         PictureBox pictureMarker;
-
-
+        private string quizName;
+        private int quizId;
+        Timer timer;
+        Stopwatch sw;
 
         public QuizScreen()
         {
             InitializeComponent();
+        }
+
+        public QuizScreen(string quizName, int quizId)
+        {
+            this.quizName = quizName;
+            this.quizId = quizId;
         }
 
         // Button to go to next question.
@@ -164,6 +173,23 @@ namespace Quiz
                     points++;
                 }
             }
+        }
+
+        private void Time_lbl_Click(object sender, EventArgs e)
+        {
+            timer = new Timer();
+            timer.Interval = (1000);
+            timer.Tick += new EventHandler(timer1_Tick);
+            sw = new Stopwatch();
+            timer.Start();
+            sw.Start();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            Time_lbl.Text = "Running for " + sw.Elapsed.Seconds.ToString() + " seconds";
+            Application.DoEvents();
+            
         }
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)

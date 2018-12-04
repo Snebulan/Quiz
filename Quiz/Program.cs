@@ -27,7 +27,7 @@ namespace Quiz.Model
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new AdminScreen());
             //Application.Run(new Default());
-            Application.Run(new QuizScreen());
+            //Application.Run(new QuizScreen());
             //Application.Run(new ListStuff());
             //Application.Run(new QuizSelector());
         }
