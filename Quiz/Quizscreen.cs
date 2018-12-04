@@ -65,7 +65,9 @@ namespace Quiz
 
         }
 
+        int counter = 0;
         List<string> questionsList = new List<string>();
+        List<int> questionsIDs = new List<int>();
         public void popluate()
         {
             foreach(var question in Program.QuestionsList)
@@ -73,6 +75,7 @@ namespace Quiz
                 if(question.Quiz.Id == quizId)
                 {
                     questionsList.Add(question.Question);
+                    questionsIDs.Add(question.Id);
                 }
             }
             // Count the question to loop throught.
@@ -118,26 +121,49 @@ namespace Quiz
 
                 
                 locationX = 60;
-                List<Answers> IdOfQuestion = Program.AnswersList.FindAll(q => q.Questions.Id == i+1);
-                foreach (var answer in IdOfQuestion)
+                List<Answers> list = Program.AnswersList;
+                
+                foreach(var answer in list)
                 {
                     
-                    // label for every answer in a question.
-                    lblAnswer = new Label();
-                    lblAnswer.Text = answer.Answer;
-                    lblAnswer.Location = new Point(40, locationX += 20);
-                    lblAnswer.AutoSize = true;
-                    tabControl1.TabPages[i].Controls.Add(lblAnswer);
-
-                    // radiobutton for every answer in a question.
-                    ListOfRadioButtons.Add(new RadioButton());
-                    ListOfRadioButtons[answer.Id - 1].Location = new Point(20, (locationX += 20) - 25);
-                    tabControl1.TabPages[i].Controls.Add(ListOfRadioButtons[answer.Id - 1]);
-                    if (answer.CorrectAnswer == true)
+                    if(answer.Questions.Id == questionsIDs[i])
                     {
-                        ListOfRadioButtons[answer.Id - 1].Text = "1";
+                        lblAnswer = new Label();
+                        lblAnswer.Text = answer.Answer;
+                        lblAnswer.Location = new Point(40, locationX += 20);
+                        lblAnswer.AutoSize = true;
+                        tabControl1.TabPages[i].Controls.Add(lblAnswer);
+
+                        // radiobutton for every answer in a question.
+                        ListOfRadioButtons.Add(new RadioButton());
+                        ListOfRadioButtons[counter].Location = new Point(20, (locationX += 20) - 25);
+                        tabControl1.TabPages[i].Controls.Add(ListOfRadioButtons[counter]);
+                        if (answer.CorrectAnswer == true)
+                        {
+                            ListOfRadioButtons[counter].Text = "1";
+                        }
+                        counter++;
                     }
                 }
+                //List<Answers> IdOfQuestion = list.FindAll(a => a.Questions.Id == questionsIDs[i]);
+                //foreach (var answer in IdOfQuestion)
+                //{
+                //    // label for every answer in a question.
+                //    lblAnswer = new Label();
+                //    lblAnswer.Text = answer.Answer;
+                //    lblAnswer.Location = new Point(40, locationX += 20);
+                //    lblAnswer.AutoSize = true;
+                //    tabControl1.TabPages[i].Controls.Add(lblAnswer);
+
+                //    // radiobutton for every answer in a question.
+                //    ListOfRadioButtons.Add(new RadioButton());
+                //    ListOfRadioButtons[answer.Id - 1].Location = new Point(20, (locationX += 20) - 25);
+                //    tabControl1.TabPages[i].Controls.Add(ListOfRadioButtons[answer.Id - 1]);
+                //    if (answer.CorrectAnswer == true)
+                //    {
+                //        ListOfRadioButtons[answer.Id - 1].Text = "1";
+                //    }
+                //}
             }  
         }
 
