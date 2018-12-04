@@ -60,12 +60,14 @@ namespace Quiz
 
         private void CreateQuizScreen()
         {
-            QZ = new QuizScreen();
-            QZ.Tag = this;
-            QZ.StartPosition = FormStartPosition.Manual;
-            QZ.Location = this.Location;
-            QZ.Show(this);
+            new QuizSelector().Show();
             Hide();
+            //QZ = new QuizScreen();
+            //QZ.Tag = this;
+            //QZ.StartPosition = FormStartPosition.Manual;
+            //QZ.Location = this.Location;
+            //QZ.Show(this);
+            //Hide();
         }
 
         private void CreateAdminScreen()
